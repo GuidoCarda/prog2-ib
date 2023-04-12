@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tablas practica</title>
+    <meta
+      description="Esta es una pagina de tablas en html para practicar su uso en desarrollo web"
+    />
+  </head>
+  <body>
+    <h1>Tabla en html</h1>
+    <p>
+      A continuacion podemos ver una tabla creada utilizando html. Con ayuda de
+      las propiedades align, colspan, rowspan y bgcolor
+    </p>
+    <table border="1" align="center" borderColor="#808080" cellpadding="10">
+      <tr bgcolor="#555555">
+        <td colspan="4" text="fff" align="center" style="color: #ffffff">
+          Animales en peligro de extincion
+        </td>
+      </tr>
+
+      <tr bgcolor="gray">
+        <th>Nombre</th>
+        <th>Cabezas</th>
+        <th>Prevision 2010</th>
+        <th>Prevision 2020</th>
+      </tr>
+
+      <tr bgcolor="lightgray">
+        <td>Ballena</td>
+        <td>6000</td>
+        <td>4000</td>
+        <td>1500</td>
+      </tr>
+      <tr bgcolor="lightgray">
+        <td>Oso pardo</td>
+        <td>50</td>
+        <td colspan="2" rowspan="2" align="center" bgcolor="red">0</td>
+      </tr>
+      <tr bgcolor="lightgray">
+        <td>Lince</td>
+        <td>10</td>
+      </tr>
+
+      <tr bgcolor="lightgray">
+        <td>Tigre</td>
+        <td>300</td>
+        <td colspan="2" align="center">210</td>
+      </tr>
+    </table>
+  </body>
+</html>

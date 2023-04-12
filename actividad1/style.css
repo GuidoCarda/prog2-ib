@@ -1,0 +1,195 @@
+html {
+  font-family: "Open Sans", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: min(80vw, 1080px);
+  margin-inline: auto;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+button {
+  cursor: pointer;
+}
+
+nav {
+  height: 4rem;
+  border-bottom: 1px solid rgb(195, 195, 195);
+}
+
+nav .container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+nav span {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: grey;
+  transition: color 200ms;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+}
+
+nav ul a:is(:hover) {
+  color: black;
+  background: rgb(230, 230, 235);
+}
+
+main {
+  min-height: calc(100vh - 7rem);
+}
+
+main > div {
+  padding-block: 3rem;
+}
+
+main h1 {
+  font-size: 4rem;
+}
+
+main h1 ~ p {
+  font-size: 1.5rem;
+  color: grey;
+}
+
+main section + section {
+  margin-top: 3rem;
+}
+
+main > div > section > h2 {
+  margin-bottom: 1.5rem;
+}
+
+main section > p + p {
+  margin-top: 1rem;
+}
+
+.resume-cards {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.resume-cards > article {
+  background: rgb(234, 234, 238);
+  color: hsl(254, 5%, 47%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.resume-cards > article > span {
+  margin-top: 1rem;
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: rgb(43, 42, 47);
+}
+
+.page-title {
+  margin-bottom: 3rem;
+}
+
+.return-link {
+  color: darkgray;
+}
+
+/* stock page */
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stock-table td,
+tr {
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+#stock .table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#stock .table-actions > span {
+  color: rgb(166, 163, 187);
+  font-weight: bold;
+}
+
+#stock .table-actions > button {
+  height: 2rem;
+  padding-inline: 0.5rem;
+  border: none;
+  font: inherit;
+}
+
+/* form */
+form {
+  border-left: 1px solid rgb(220, 220, 220);
+  padding-inline-start: 1rem;
+  width: min(350px, 95vw);
+}
+
+form button {
+  height: 2.5rem;
+  width: 100%;
+  margin-top: 2.5rem;
+  border: none;
+  background: #494953;
+  color: white;
+  border-radius: 0.3rem;
+}
+
+form > input,
+form > select {
+  height: 2.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding-inline-start: 0.5rem;
+  font-size: inherit;
+}
+
+form label {
+  display: block;
+}
+
+form input + label {
+  margin-top: 1rem;
+}
+
+#ventas h2,
+#compras h2 {
+  margin-bottom: 1rem;
+}
+
+footer {
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-top: 2px solid rgb(241, 241, 241);
+  color: grey;
+}

@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>compras</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <span>Quimicos</span>
+        <ul>
+          <li><a href="/actividad1/actividad1.html">Inicio</a></li>
+          <li><a href="ventas.html">ventas</a></li>
+          <li><a href="compras.html">compras</a></li>
+          <li><a href="stock.html">stock</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main id="compras">
+      <div class="container">
+        <a class="return-link" href="actividad1.html">Inicio</a>
+        <h1 class="page-title">compras</h1>
+
+        <h2>Cargar compra</h2>
+        <form>
+          <label for="nombre">Nombre Proveedor</label>
+          <input type="text" required name="nombre_prov" id="nombre" />
+          <label for="producto">Nombre producto</label>
+          <input type="text" required name="nombre_prod" id="producto" />
+          <label for="cant_prod">Cantidad</label>
+          <input type="number" required id="cant_prod" />
+          <label for="total">Monto total</label>
+          <input type="text" required name="monto_total" id="total" />
+          <label for="">Forma de pago</label>
+          <select name="productos" id="">
+            <option value="">Efectivo</option>
+            <option value="">Trans. Bancaria</option>
+            <option value="">T. Debito</option>
+            <option value="">T. Credito</option>
+          </select>
+          <button>Cargar Compra</button>
+        </form>
+      </div>
+    </main>
+    <footer>Quimicamente 2023 Derechos reservados</footer>
+  </body>
+</html>
