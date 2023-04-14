@@ -31,6 +31,10 @@ nav .container {
   align-items: center;
 }
 
+.nav-toggle {
+  display: none;
+}
+
 .nav-logo {
   font-weight: bold;
   font-size: 1.25rem;
@@ -56,6 +60,57 @@ nav ul a {
 nav ul a:is(:hover) {
   color: black;
   background: rgb(230, 230, 235);
+}
+
+#check {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  nav .container {
+    position: relative;
+    justify-content: space-between;
+  }
+
+  nav .container > ul {
+    position: absolute;
+    display: none;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: #fff;
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 10px 10px 5px rgba(191, 186, 208, 0.2);
+  }
+
+  nav .container > ul li > a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding-block: 0.875rem;
+    border: 1px solid rgb(209, 208, 215);
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+  .nav-toggle * + * {
+    margin-top: 5px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    height: 2px;
+    width: 20px;
+    background: black;
+  }
+
+  #check:checked ~ ul {
+    display: flex;
+  }
 }
 
 main {
