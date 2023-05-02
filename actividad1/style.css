@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
 html {
   font-family: "Open Sans", sans-serif;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +13,7 @@ html {
 .container {
   width: min(80vw, 1080px);
   margin-inline: auto;
+  padding-block: 3rem;
 }
 
 body {
@@ -26,6 +30,7 @@ nav {
 }
 
 nav .container {
+  padding: 0;
   display: flex;
   height: 100%;
   align-items: center;
@@ -118,6 +123,8 @@ nav ul a:is(:hover) {
   }
 }
 
+/* Login page */
+
 .container.login {
   display: grid;
   place-items: center;
@@ -183,60 +190,36 @@ nav ul a:is(:hover) {
   color: black;
 }
 
+/*  */
+
 main {
   min-height: calc(100vh - 7rem);
 }
 
-main > div {
-  padding-block: 3rem;
-}
-
-main h1 {
+h1 {
   font-size: 4rem;
 }
 
-main p {
-  color: gray;
-  line-height: 2;
+p {
   font-size: 1.125rem;
+  color: grey;
+  line-height: 2;
 }
 
-main section + section {
-  margin-top: 3rem;
-}
-
-main > div > section > h2 {
-  margin-bottom: 1.5rem;
-}
-
-main section > p + p {
+p + p {
   margin-top: 1rem;
 }
+/* 
+section {
+  border: 2px solid black;
+} */
 
-main section {
-  padding-block: 2rem;
+section h2 {
+  margin-bottom: 1.125rem;
 }
 
-.resume-cards {
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.resume-cards > article {
-  background: rgb(234, 234, 238);
-  color: hsl(254, 5%, 47%);
-  border-radius: 0.5rem;
-  padding: 1rem;
-}
-
-.resume-cards > article > span {
-  margin-top: 1rem;
-  display: block;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: rgb(43, 42, 47);
+section + section {
+  margin-top: 2.5rem;
 }
 
 .page-title {
@@ -253,6 +236,7 @@ main section {
   gap: 1rem;
   flex-wrap: wrap;
   padding-bottom: 1rem;
+  margin-bottom: 2rem;
   border-bottom: 2px solid rgb(222, 222, 222);
 }
 
@@ -284,6 +268,58 @@ main section {
 .sub-menu > li:hover {
   transform: translateY(-1px);
   box-shadow: 0px 10px 10px 0px #cacaca;
+}
+
+/* Analisis */
+
+.resume-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.resume-cards > article {
+  border: 1px solid black;
+  padding: 2rem;
+  border-radius: 1rem;
+  height: 12rem;
+  transition: all 500ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.resume-cards > article span {
+  font-size: 2.5rem;
+  color: rgb(10, 10, 10);
+  font-weight: 700;
+}
+
+.resume-cards > article h3 {
+  font-weight: 400;
+  color: grey;
+}
+
+.resume-cards > article:hover {
+  background: black;
+  color: white;
+}
+
+.resume-cards > article:hover span {
+  font-size: 2.5rem;
+  color: rgb(241, 241, 241);
+  font-weight: 700;
+}
+
+.resume-cards > article:hover h3 {
+  color: rgb(181, 181, 181);
+}
+
+.commentary {
+  display: block;
+  margin-bottom: 1rem;
+  color: gray;
+  font-size: 1.5rem;
 }
 
 footer {
