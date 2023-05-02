@@ -1,0 +1,37 @@
+<!-- Hacer una pagina solo en html con un menu principal para gestion de una empresa
+de ventas de productos quimicos al por mayor. Cada opcion del menu debe invocar
+otras paginas por ahora, no tengan mas que un boton para volver al menu
+principal -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Actividad 1</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <a class="nav-logo" href="login.html">Químicamente</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container login">
+        <form action="analisis.html" class="login-form">
+          <h2>Bienvenido!</h2>
+          <div>
+            <label for="">usuario</label>
+            <input type="text" required />
+          </div>
+          <div>
+            <label for="">contraseña</label>
+            <input type="password" required />
+          </div>
+          <button>Iniciar sesion</button>
+        </form>
+      </div>
+    </main>
+    <footer>Quimicamente 2023 Derechos reservados</footer>
+  </body>
+</html>
