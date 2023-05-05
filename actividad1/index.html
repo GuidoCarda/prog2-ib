@@ -5,6 +5,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- <script>
+
+      -v2 
+      window.onload = function () {
+        document.getElementById("user-input").focus();
+      };
+    </script> -->
     <nav>
       <div class="container">
         <a class="nav-logo" href="login.html">Químicamente</a>
@@ -17,7 +24,7 @@
           <h2>Bienvenido!</h2>
           <div>
             <label for="">usuario</label>
-            <input type="text" required />
+            <input autofocus id="user-input" type="text" required />
           </div>
           <div>
             <label for="">contraseña</label>
@@ -28,5 +35,10 @@
       </div>
     </main>
     <footer>Quimicamente 2023 Derechos reservados</footer>
+    <!-- <script>
+      V2
+      const userInput = document.getElementById("user-input");
+      userInput.focus();
+    </script> -->
   </body>
 </html>
