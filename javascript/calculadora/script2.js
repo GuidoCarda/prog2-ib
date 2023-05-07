@@ -1,4 +1,4 @@
-const ACTIONS = {
+const OPERATORS = {
   add: "+",
   sub: "-",
   prod: "*",
@@ -34,7 +34,7 @@ buttons.addEventListener("click", function (event) {
     }
 
     //Si el ultimo caracter es un operador, retornamos una alerta
-    if (isLastCharacterAnOperand(screen.textContent)) {
+    if (isLastCharacterAnOperator(screen.textContent)) {
       return alert("Accción invalida");
     }
 
@@ -43,7 +43,7 @@ buttons.addEventListener("click", function (event) {
       return;
     }
 
-    screen.textContent += ACTIONS[value];
+    screen.textContent += OPERATORS[value];
   }
 
   if (key === "number") {
@@ -56,7 +56,7 @@ buttons.addEventListener("click", function (event) {
 });
 
 //Checkea si el ultimo caracter de un string es un operador
-function isLastCharacterAnOperand(str) {
+function isLastCharacterAnOperator(str) {
   return Object.values(ACTIONS).includes(str.at(-1));
 }
 

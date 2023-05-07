@@ -34,11 +34,21 @@ buttons.addEventListener("click", function (event) {
     }
 
     //Si el ultimo caracter es un operador, retornamos una alerta
-    if (isLastCharacterAnOperand(screen.textContent)) {
+    if (isLastCharacterAnOperator(screen.textContent)) {
       return alert("Accción invalida");
     }
 
     if (value === "equal") {
+      const [operator] = screen.textContent.match(/[^0-9]/g);
+      console.log(operator);
+      if (operator === "/") {
+        const divider = screen.textContent.split("/")[1];
+        if (divider === "0") {
+          alert("No se puede dividir por 0");
+          return;
+        }
+      }
+
       screen.textContent = eval(screen.textContent);
       return;
     }
@@ -54,21 +64,9 @@ buttons.addEventListener("click", function (event) {
       screen.textContent += value;
     }
   }
-
-  console.log("llego al final");
 });
 
 //Checkea si el ultimo caracter de un string es un operador
-function isLastCharacterAnOperand(str) {
-  // El metodo Object.values nos retorna un array de los valores enumerables
-  //de un objeto.
-
-  //El metodo includes retorna verdadero o falzo dependiendo si
-  //el array contiene o no el valor recibido como parametro
-
-  //El metodo .at, nos permite obtener un valor de un string o array
-  //basado en su indice
-
-  // Si usamos un indice negativo, este comienza desde el fin de la cadena/array
+function isLastCharacterAnOperator(str) {
   return Object.values(ACTIONS).includes(str.at(-1));
 }
