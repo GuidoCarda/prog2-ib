@@ -5,10 +5,10 @@ const OPERATORS = {
   div: "/",
 };
 
-const buttons = document.querySelector("#buttons");
+const buttonsContainer = document.querySelector("#buttons");
 const screen = document.querySelector("span");
 
-buttons.addEventListener("click", function (event) {
+buttonsContainer.addEventListener("click", function (event) {
   //Obtengo el boton mas cercano, si existe
   const clickedButton = event.target.closest("button");
 
