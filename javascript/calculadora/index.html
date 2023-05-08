@@ -3,116 +3,35 @@
   <head>
     <title>Calculadora</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      height: 100vh;
-      display: grid;
-      place-items: center;
-    }
-
-    main {
-      width: min(100vw, 380px);
-      margin-inline: auto;
-      background: white;
-      border: 2px solid rgb(200, 200, 211);
-      border-radius: 1.5rem;
-      overflow: hidden;
-    }
-
-    main span {
-      display: block;
-      height: 10rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      padding: 1.25rem;
-      font-size: 2rem;
-      font-weight: 500;
-    }
-
-    section {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      grid-template-areas:
-        "clear clear delete division"
-        "seven eight nine product"
-        "four five six substraction"
-        "one two three addition"
-        "cero cero cero equal";
-      background: rgb(242, 242, 245);
-      padding: 1.25rem;
-
-      border-radius: 1.25rem 1.25rem 0 0;
-    }
-
-    #action-clear {
-      grid-area: clear;
-    }
-
-    #number-0 {
-      grid-area: cero;
-    }
-
-    #action-equal {
-      background: hsl(240, 33%, 47%);
-      color: white;
-    }
-
-    section > button:not(#number-0, #action-clear) {
-      aspect-ratio: 1/1;
-    }
-
-    section > button {
-      border: none;
-      background: transparent;
-      font-size: 2rem;
-      transition: all 0.5s;
-      border-radius: 0.5rem;
-      background: hsl(240, 13%, 90%);
-      outline: 2px solid transparent;
-    }
-
-    section > button:focus-within {
-      outline: 2px solid hsl(240, 33%, 47%);
-    }
-
-    section > button:hover {
-      background: hsl(240, 13%, 80%);
-      color: hsl(240, 33%, 32%);
-    }
-  </style>
   <body>
     <main>
       <span></span>
 
-      <section id="actions">
-        <button id="action-clear">c</button>
-        <button id="action-delete"><-</button>
-        <button id="action-div">/</button>
+      <section id="buttons">
+        <button id="action-clear">AC</button>
+        <button id="action-delete">
+          <img src="assets/backspace.svg" alt="" />
+        </button>
+        <button id="operator-div">
+          <img src="assets/division.svg" alt="" />
+        </button>
         <button id="number-7">7</button>
         <button id="number-8">8</button>
         <button id="number-9">9</button>
-        <button id="action-prod">x</button>
+        <button id="operator-prod">
+          <img src="assets/product.svg" alt="" />
+        </button>
         <button id="number-4">4</button>
         <button id="number-5">5</button>
         <button id="number-6">6</button>
-        <button id="action-sub">-</button>
+        <button id="operator-sub"><img src="assets/minus.svg" alt="" /></button>
         <button id="number-1">1</button>
         <button id="number-2">2</button>
         <button id="number-3">3</button>
-        <button id="action-add">+</button>
+        <button id="operator-add"><img src="assets/plus.svg" alt="" /></button>
         <button id="number-0">0</button>
         <button id="action-equal">=</button>
       </section>
