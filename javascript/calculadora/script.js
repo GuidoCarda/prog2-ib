@@ -33,9 +33,15 @@ buttonsContainer.addEventListener("click", function (event) {
     }
 
     if (buttonValue === "delete") {
-      //Eliminamos el ultimo caracter del input
-      screen.textContent = screen.textContent.slice(0, -1);
-      return;
+      //Si el eval dio como resultado infinity limpiamos el input
+
+      if (screen.textContent.includes("Infinity")) {
+        screen.textContent = "";
+      } else {
+        //Eliminamos el ultimo caracter del input
+        screen.textContent = screen.textContent.slice(0, -1);
+        return;
+      }
     }
 
     //Si el ultimo caracter es un operador, retornamos una alerta
