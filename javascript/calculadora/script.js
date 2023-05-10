@@ -22,13 +22,18 @@ buttonsContainer.addEventListener("click", function (event) {
 
   if (buttonType === "action") {
     //Si se presiona una accion y el input es vacio, retornamos un error
-    if (!inputLength) {
+    if (!inputLength && buttonValue !== "point") {
       return alert("Accción invalida");
     }
 
     if (buttonValue === "clear") {
       //Limpiamos el input
       screen.textContent = "";
+      return;
+    }
+
+    if (buttonValue === "point" && !(screen.textContent.at(-1) === ".")) {
+      screen.textContent += ".";
       return;
     }
 

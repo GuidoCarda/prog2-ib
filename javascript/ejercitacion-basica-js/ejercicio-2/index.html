@@ -37,34 +37,38 @@
       border: 2px solid purple;
       outline: none;
     }
+
+    .result {
+      margin-top: 2rem;
+    }
   </style>
   <body>
     <main>
       <section>
         <h1>conversor temperatura</h1>
-        <input type="text" />
-        <select name="" id="">
-          <option value="roemer">Roemer</option>
+        <input type="text" autofocus id="current-temperature" />
+        <select name="" id="current-scale-select">
+          <option value="celcius" selected>Celcius</option>
+          <option value="romer">Romer</option>
           <option value="farenheit">Farenheit</option>
-          <option value="celcius">Celcius</option>
           <option value="kelvin">Kelvin</option>
         </select>
 
         <span> -- > </span>
 
-        <select name="" id="">
-          <option value="roemer">Roemer</option>
-          <option value="farenheit">Farenheit</option>
+        <select name="" id="desired-scale-select">
+          <option value="farenheit" selected>Farenheit</option>
           <option value="celcius">Celcius</option>
+          <option value="romer">Romer</option>
           <option value="kelvin">Kelvin</option>
         </select>
         <button>calcular</button>
       </section>
 
-      <div>
-        <span>10c</span>
+      <div class="result">
+        <span class="result-current-value">30c</span>
         <span>es igual a </span>
-        <span>121.32k</span>
+        <span class="result-desired-value">86f</span>
       </div>
     </main>
     <script src="script.js"></script>
