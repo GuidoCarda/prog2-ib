@@ -1,7 +1,7 @@
 const CONVERTION_FORMULAS = {
   "celcius-farenheit": (celcius) => celcius * (9 / 5) + 32,
   "farenheit-celcius": (farenheit) => (farenheit - 32) * (5 / 9),
-  "farenheit-kelvin": (farenheit) => farenheit + 459.67 * (5 / 9),
+  "farenheit-kelvin": (farenheit) => (farenheit + 459.67) * (5 / 9),
   "kelvin-farenheit": (kelvin) => kelvin * (9 / 5) - 459.67,
   "celcius-kelvin": (celcius) => celcius + 273.15,
   "kelvin-celcius": (kelvin) => kelvin - 273.15,
