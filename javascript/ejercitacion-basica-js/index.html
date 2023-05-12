@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+
+      :root {
+        --bg-color-card: rgb(255, 255, 255);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: "Inter", sans-serif;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      nav span:last-of-type {
+        font-weight: 700;
+        color: grey;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: 4rem auto 4rem;
+      }
+
+      main,
+      nav {
+        width: min(1080px, 90%);
+        margin-inline: auto;
+      }
+
+      main {
+        padding-block: 2rem;
+        position: relative;
+      }
+
+      .page-title {
+        font-size: 2rem;
+        list-style: 2, 5rem;
+        margin-block: 0rem 3rem;
+        color: #1f1f1f;
+      }
+
+      .exercises-list {
+        /* border: 2px solid black; */
+        position: relative;
+        list-style: none;
+        display: grid;
+        gap: 1rem 2em;
+      }
+
+      @media (min-width: 800px) {
+        .exercises-list {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .exercise-card {
+        border: 1px solid rgb(234, 234, 234);
+        background: var(--bg-color-card);
+        display: block;
+        height: auto;
+        border-radius: 0.5rem;
+        padding: 1.25rem 1rem;
+        transition: transform 0.25s;
+      }
+
+      .exercise-card:is(:hover) {
+        transform: scale(1.025);
+        box-shadow: 0px 10px 10px 2px hsla(0, 0%, 0%, 0.05);
+      }
+
+      .exercise-card--title {
+        margin-bottom: 1rem;
+        color: #1f1f1f;
+      }
+
+      .exercise-card--desc {
+        position: relative;
+        /* border: 2px solid black; */
+        line-height: 1.5rem;
+        height: calc(3 * 1.5rem);
+        overflow: hidden;
+        color: #6f6f6f;
+      }
+
+      .exercise-card--desc::after {
+        content: "";
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 1.5rem;
+        width: 50%;
+
+        background: linear-gradient(90deg, transparent, var(--bg-color-card));
+      }
+
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border-top: 1px solid grey;
+        color: rgb(198, 198, 198);
+        position: relative;
+      }
+      footer a {
+        color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span>Ejercicios JS</span>
+      <a target="_blank" href="https://github.com/guidocarda"
+        >Cardarelli Guido</a
+      >
+    </nav>
+    <main>
+      <h1 class="page-title">Listado de ejercicios</h1>
+      <ul class="exercises-list"></ul>
+    </main>
+    <footer>
+      Idea original de
+      <a target="_blank" href="https://github.com/joaquinvesapa">
+        Joaquin Vesco Aparicio ©
+      </a>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

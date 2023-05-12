@@ -24,7 +24,8 @@ button.addEventListener("click", () => {
     return alert("un valor ingresado no es un entero");
   }
 
-  const numberDiference = Math.abs(firstValue - secondValue);
+  const numberDiference =
+    firstValue === secondValue ? 0 : Math.abs(firstValue - secondValue);
 
   const containerDiv = document.createElement("div");
   const firstResultElem = document.createElement("span");
