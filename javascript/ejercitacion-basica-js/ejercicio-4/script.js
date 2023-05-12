@@ -3,45 +3,47 @@
 // segundo es menor que el primero, mostrar el cubo del segundo menos el primero.  -->
 
 const form = document.querySelector("form");
+const firstInput = form.querySelector("#first-number");
+const secondInput = form.querySelector("#second-number");
+
 const resultSection = document.querySelector("section");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const firstInput = form.querySelector("#first-number");
-  const secondInput = form.querySelector("#second-number");
+  //Si hay errores de un previo submit los limpio antes de re-validar
+  clearErrors([firstInput, secondInput]);
 
-  //Eliminar si ya
-  firstInput.classList.remove("error");
-  secondInput.classList.remove("error");
-
+  //Valido los imputs, almaceno el error si existe
   const errors = {
-    firstInput: validateInput(firstInput.value.trim()),
-    secondInput: validateInput(secondInput.value.trim()),
+    firstInputError: validateInput(firstInput.value.trim()),
+    secondInputError: validateInput(secondInput.value.trim()),
   };
 
-  if (errors.firstInput || errors.secondInput) {
+  //Si existe un error, lo muestro en el campo correspondiente
+  if (errors.firstInputError || errors.secondInputError) {
     resultSection.innerHTML = "";
-    if (errors.firstInput.length) {
-      firstInput.nextElementSibling.textContent = errors.firstInput;
-      firstInput.classList.add("error");
+    if (errors.firstInputError) {
+      displayError(firstInput, errors.firstInputError);
     }
-    if (errors.secondInput.length) {
-      secondInput.nextElementSibling.textContent = errors.secondInput;
-      secondInput.classList.add("error");
+    if (errors.secondInputError) {
+      displayError(secondInput, errors.secondInputError);
     }
+    //Retorno para evitar calcular con datos invalidos
     return;
   } else {
-    firstInput.classList.remove("error");
-    secondInput.classList.remove("error");
+    //Si no queda ningun error restante, limpio los errores en pantalla
+    clearErrors([firstInput, secondInput]);
   }
 
+  //Calculo el resultado y lo muestro en pantalla
   resultSection.innerHTML = getResult(
     firstInput.value.trim(),
     secondInput.value.trim()
   ).toFixed(2);
 });
 
+//Validar los valores ingresados. No nulos y numericos
 function validateInput(input) {
   if (!input.length) {
     return "campo vacio";
@@ -52,6 +54,7 @@ function validateInput(input) {
   return "";
 }
 
+//Calcular resultado, basado en enunciado del ejercicio
 function getResult(firstValue, secondValue) {
   if (firstValue === secondValue) {
     return Math.pow(firstValue, 2);
@@ -60,4 +63,18 @@ function getResult(firstValue, secondValue) {
   } else {
     return Math.pow(secondValue, 3) - firstValue;
   }
+}
+
+//Mostrar un error en pantalla
+function displayError(input, errorMessage) {
+  input.nextElementSibling.textContent = errorMessage;
+  input.classList.add("error");
+}
+
+//Limpiar errores de los inputs
+function clearErrors(inputs = []) {
+  inputs.forEach((input) => {
+    input.classList.remove("error");
+    input.nextElementSibling.innerHTML = "";
+  });
 }
