@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 7</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: sans-serif;
+    }
+
+    :is(html, body, main) {
+      height: 100%;
+    }
+
+    form {
+      width: min(300px, 100%);
+      margin-inline: auto;
+      padding: 1rem;
+      margin-top: 10rem;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    form label + input {
+      margin-bottom: 1rem;
+    }
+
+    form input,
+    form button {
+      height: 3rem;
+      width: 100%;
+      border-radius: 0.3rem;
+      border: 2px solid transparent;
+      font: inherit;
+    }
+
+    form input {
+      background: rgb(226, 226, 226);
+      padding-inline: 1rem;
+    }
+
+    form button {
+      background-color: rgb(233, 208, 119);
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+  </style>
+  <body>
+    <main>
+      <form id="age-form">
+        <label for="">Edad Persona 1</label>
+        <input type="text" />
+        <label for="">Edad Persona 2</label>
+        <input type="text" />
+        <label for="">Edad Persona 3</label>
+        <input type="text" />
+        <button>Calcular</button>
+      </form>
+
+      <section></section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<!-- "Ingresando la edad de tres personas, calcular el promedio de las dos más viejas y decir cuántas son mayores de 18 años.", -->
