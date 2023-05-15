@@ -1,0 +1,103 @@
+<!--  "Hacer un programa que permita convertir pesos a dólares y a reales. Para ello, el programador ya conoce la cotización de ambas monedas.", -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    main {
+      /* border: 2px solid blue; */
+      min-height: 100%;
+      width: min(800px, 90%);
+      margin-inline: auto;
+      gap: 2rem;
+      padding-block: 5rem;
+    }
+
+    form {
+      max-width: 400px;
+      margin-inline: auto;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    button {
+      cursor: pointer;
+      margin-top: 2rem;
+    }
+
+    button,
+    input {
+      height: 3rem;
+      width: 100%;
+      font: inherit;
+    }
+
+    input {
+      padding: 1rem;
+      border: 1px solid rgb(236, 236, 236);
+      border-radius: 0.3rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    section {
+      /* border: 2px solid red; */
+      display: grid;
+      max-width: 100%;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+      margin-top: 2rem;
+    }
+
+    section > div {
+      text-align: center;
+      /* border: 2px solid grey; */
+      border-radius: 0.3rem;
+      padding: 1rem;
+      background: rgb(246, 246, 246);
+    }
+
+    #result > h2 {
+      text-transform: capitalize;
+    }
+
+    .convertion {
+      font-size: 3rem;
+    }
+  </style>
+  <body>
+    <main>
+      <h1>Calculadora cotizaciónes</h1>
+      <form action="">
+        <label for="pesos">Ars</label>
+        <input name="pesos" id="pesos" type="number" min="0" />
+        <button>calcular</button>
+      </form>
+      <section id="results"></section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
