@@ -18,6 +18,20 @@
         box-sizing: border-box;
       }
 
+      /* scrollbar customization */
+      body::-webkit-scrollbar {
+        width: 0.875rem;
+      }
+
+      body::-webkit-scrollbar-track {
+        /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4); */
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+      }
+
       html {
         font-family: "Inter", sans-serif;
       }
@@ -36,10 +50,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-      }
-
-      nav span:last-of-type {
-        font-weight: 700;
         color: grey;
       }
 
@@ -52,6 +62,40 @@
       nav {
         width: min(1080px, 90%);
         margin-inline: auto;
+      }
+
+      nav span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+      }
+
+      nav span .js-logo {
+        height: 1.875rem;
+        width: 1.875rem;
+        border-radius: 4px;
+      }
+
+      nav a {
+        display: flex;
+        padding: 5px;
+        align-items: center;
+        gap: 1rem;
+        transition: 250ms;
+      }
+
+      nav a:hover {
+        background: rgb(249, 249, 249);
+        padding: 5px 5px 5px 1rem;
+        border-radius: 2rem;
+        color: black;
+      }
+
+      nav .profile-img {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 100%;
       }
 
       main {
@@ -81,18 +125,32 @@
       }
 
       .exercise-card {
+        position: relative;
         border: 1px solid rgb(234, 234, 234);
         background: var(--bg-color-card);
         display: block;
         height: auto;
         border-radius: 0.5rem;
         padding: 1.25rem 1rem;
-        transition: transform 0.25s;
+        transition: transform 1s;
       }
 
-      .exercise-card:is(:hover) {
-        transform: scale(1.025);
-        box-shadow: 0px 10px 10px 2px hsla(0, 0%, 0%, 0.05);
+      .exercise-card::before {
+        transition: 0.3s;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: blur(1rem);
+        opacity: 0;
+        z-index: -10;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+      }
+
+      .exercise-card:hover::before {
+        opacity: 0.2;
       }
 
       .exercise-card--title {
@@ -132,15 +190,40 @@
       }
       footer a {
         color: grey;
+        position: relative;
+      }
+
+      footer a:hover {
+        color: black;
+        z-index: 100;
+      }
+
+      footer a:hover::before {
+        position: absolute;
+        content: "";
+        height: 2rem;
+        width: 12rem;
+        z-index: 0;
+        filter: blur(1rem);
+        opacity: 0.2;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
       }
     </style>
   </head>
   <body>
     <nav>
-      <span>Ejercicios JS</span>
+      <span
+        >Ejercicios
+        <img src="/media/logo-javascript.svg" class="js-logo" alt="" />
+      </span>
       <a target="_blank" href="https://github.com/guidocarda"
-        >Cardarelli Guido</a
-      >
+        >Cardarelli Guido
+        <img
+          src="https://avatars.githubusercontent.com/u/78933518?s=400&u=ccc0a53dcea8fbac979acf93e2a9ffcfe50cf9d2&v=4"
+          alt=""
+          class="profile-img"
+        />
+      </a>
     </nav>
     <main>
       <h1 class="page-title">Listado de ejercicios</h1>
@@ -152,6 +235,7 @@
         Joaquin Vesco Aparicio ©
       </a>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
