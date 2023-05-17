@@ -149,7 +149,7 @@
         background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
       }
 
-      .exercise-card:hover::before {
+      .exercise-card:not(.pending):hover::before {
         opacity: 0.2;
       }
 
@@ -177,6 +177,14 @@
         width: 50%;
 
         background: linear-gradient(90deg, transparent, var(--bg-color-card));
+      }
+
+      .exercise-card.pending:hover {
+        cursor: not-allowed;
+      }
+
+      .exercise-card.pending > * {
+        filter: blur(2px) opacity(0.5);
       }
 
       footer {
