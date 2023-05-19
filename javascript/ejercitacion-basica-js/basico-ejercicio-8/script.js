@@ -1,10 +1,10 @@
 const COTIZACIONES = {
   dolar: 469,
   real: 46.76,
-  // euro: 514,
-  // libra: 288.98,
-  // "peso-mx": 13.22,
-  // yuan: 33.18,
+  euro: 514,
+  libra: 288.98,
+  "peso-mx": 13.22,
+  yuan: 33.18,
 };
 
 const form = document.querySelector("form");

@@ -1,15 +1,15 @@
 const form = document.querySelector("form");
 const inputField = document.querySelector("input");
+const resultSection = document.querySelector(".result");
 
 form.addEventListener("submit", handleSubmit);
 
 function handleSubmit(e) {
   e.preventDefault();
+  clearResult(resultSection);
+
   const value = inputField.value.trim();
-
   const isValid = validateInput(value);
-
-  console.log("entro");
 
   if (!isValid) {
     inputField.value = "";
@@ -18,13 +18,17 @@ function handleSubmit(e) {
 
   const result = factorial(value);
 
+  const resultString = `${value}! = ${result}`;
+  printResult(resultSection, resultString);
+}
+
+function printResult(node, content) {
   const h2 = document.createElement("h2");
-  h2.textContent = `${value}! = ${result}`;
-  document.body.appendChild(h2);
+  h2.textContent = content;
+  node.appendChild(h2);
 }
 
 function validateInput(value) {
-  console.log(value);
   if (!value.length) {
     alert("campo vacio");
     return false;
@@ -42,7 +46,7 @@ function validateInput(value) {
 
 //Recursiva
 function factorial(number) {
-  if (number == 1) return number;
+  if (number <= 1) return 1;
   return number * factorial(number - 1);
 }
 
@@ -53,3 +57,9 @@ function factorial(number) {
 //   }
 //   return factorial;
 // }
+
+function clearResult(node) {
+  if (node.hasChildNodes()) {
+    node.innerHTML = "";
+  }
+}

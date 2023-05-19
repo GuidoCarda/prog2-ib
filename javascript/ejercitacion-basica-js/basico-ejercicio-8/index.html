@@ -28,7 +28,6 @@
     }
 
     main {
-      /* border: 2px solid blue; */
       min-height: 100%;
       width: min(800px, 90%);
       margin-inline: auto;
@@ -137,7 +136,7 @@
       <h1>Calculadora cotizaciónes</h1>
       <form action="">
         <label for="pesos">Ars</label>
-        <input name="pesos" id="pesos" type="number" min="0" />
+        <input name="pesos" id="pesos" type="number" min="0" step="0.01" />
         <button>calcular</button>
       </form>
       <section id="results"></section>
