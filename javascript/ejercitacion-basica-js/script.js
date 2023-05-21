@@ -91,7 +91,7 @@ const EXERCISES = [
   {
     title: "Ejercicio 1",
     desc: "Una empresa de cable necesita un programa en Javascript que permita la carga y la estadística de la facturación mensual. Emite una factura por mes para cada cliente. Para ello cuenta con los siguientes datos por cada factura que emite: fecha de la factura, número de cliente (un número que puede ser de 1 a 1278), monto de la factura, concepto de facturación. El programa debe permitir la carga de todas las facturas del mes y obtener un informe que incluya: cantidad total facturada, promedio de facturación por cliente, cantidad de clientes cuya facturación es superior a mil pesos.",
-    done: false,
+    done: true,
     category: "avanzado",
   },
   {
@@ -117,6 +117,24 @@ const EXERCISES = [
     desc: "Desarrollar la siguiente interfaz. Después de que se hayan cargado 100 datos, obtener: KWH consumidos por quien más consumió, cantidad de habitantes de cada grupo que consumió más de 100 KWH, cantidad de personas con cada terminación de documento.",
     done: false,
     category: "avanzado",
+  },
+  {
+    title: "Ejercicio 1",
+    desc: "Deberá cargar un vector de 100 elementos por medio de un programa en Javascript, con números aleatorios entre -100 y 100. Realizar una función para mostrar los máximos relativos. Un máximo relativo es aquel término que es mayor que sus dos adyacentes.",
+    done: false,
+    category: "arreglos",
+  },
+  {
+    title: "Ejercicio 2",
+    desc: "Escribir un programa en Javascript que cargue en un array las notas de 30 alumnos de un curso (hacerlo con números al azar entre 0 y 10). Luego deberá armar una función llamada Abanderado que devolverá la nota de los 3 mejores alumnos. Fuera de la función, deberá imprimir las 3 notas y la ubicación de cada una dentro del array.",
+    done: false,
+    category: "arreglos",
+  },
+  {
+    title: "Ejercicio 3",
+    desc: "Escribir un programa en Javascript que cargue un array de 50 elementos con números al azar entre -500 y 500, y que no se repitan. Luego deberá armar una función llamada Calculos que devolverá la suma de todos los elementos del array, la cantidad de números positivos y la cantidad de números negativos que se encuentren en el array. Fuera de la función, deberá imprimir esos tres valores. Por último, deberá armar un nuevo array sólo con los números negativos encontrados en el anterior. Deberá imprimirlo por pantalla, y en caso de que no se haya encontrado ningún número negativo, informar por pantalla de esta situación.",
+    done: false,
+    category: "arreglos",
   },
 ];
 
@@ -144,8 +162,10 @@ EXERCISES.forEach((exercise) => {
   //Añado el li al ul
   if (category === "basico") {
     exercisesListElems[0].appendChild(listItem);
-  } else {
+  } else if (category === "avanzado") {
     exercisesListElems[1].appendChild(listItem);
+  } else if (category === "arreglos") {
+    exercisesListElems[2].appendChild(listItem);
   }
 });
 
