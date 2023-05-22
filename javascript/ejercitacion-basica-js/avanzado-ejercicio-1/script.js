@@ -3,7 +3,7 @@
 const form = document.querySelector("form");
 const tableBodyElem = document.querySelector("tbody");
 
-const facturas = [
+const bills = [
   {
     date: "2023-05-10",
     clientNumber: "1",
@@ -44,20 +44,42 @@ function handleSubmit(e) {
   const formData = new FormData(e.target);
   const formEntries = Object.fromEntries(formData);
 
-  const cliente = facturas.find(
-    (factura) => factura.clientNumber === formEntries.clientNumber
+  if (!formEntries.clientNumber || !formEntries.date || !formEntries.amount) {
+    return alert("campos vacios");
+  }
+
+  if (formEntries.clientNumber < 0 || formEntries.clientNumber > 1278) {
+    return alert("valor invalido");
+  }
+
+  const client = bills.find(
+    (bill) => bill.clientNumber === formEntries.clientNumber
   );
 
-  if (cliente) return alert(`Ya se facturo al cliente ${cliente.clientNumber}`);
+  if (client && client.clientNumber) {
+    const alreadyBilled = bills.findIndex(
+      (bill) =>
+        bill.clientNumber === client.clientNumber &&
+        new Date(bill.date).getFullYear() ===
+          new Date(formEntries.date).getFullYear() &&
+        new Date(bill.date).getMonth() === new Date(formEntries.date).getMonth()
+    );
 
-  facturas.push(formEntries);
+    console.log(alreadyBilled);
+
+    if (alreadyBilled >= 0) {
+      return alert("ya se facturo a este cliente el mes ingresado");
+    }
+  }
+
+  bills.push(formEntries);
   renderRows();
 }
 
 function renderRows() {
   tableBodyElem.innerHTML = "";
 
-  facturas.forEach((factura) => {
+  bills.forEach((factura) => {
     const tableRow = document.createElement("tr");
 
     tableRow.innerHTML = `

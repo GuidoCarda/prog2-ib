@@ -34,6 +34,10 @@
         border-radius: 0.3rem;
       }
 
+      button {
+        cursor: pointer;
+      }
+
       main {
         padding-block: 2rem;
       }
@@ -46,9 +50,16 @@
 
       main > section:first-of-type {
         display: grid;
-        grid-template-columns: 400px 1fr;
+        /* grid-template-columns: 400px 1fr; */
+        grid-template-columns: 1fr;
         gap: 1rem;
-        border: 2px solid black;
+        /* border: 2px solid black; */
+      }
+
+      @media (min-width: 1200px) {
+        main > section:first-of-type {
+          grid-template-columns: 400px 1fr;
+        }
       }
 
       section + section {
@@ -100,7 +111,9 @@
       .billing-history {
         border-radius: 0.5rem;
         padding: 1rem;
-        min-height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+        /* border: 2px solid red; */
       }
 
       .billing-history > div {
@@ -136,6 +149,34 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 2rem;
+      }
+
+      .statistics > article {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid;
+      }
+
+      .statistics > article h2 {
+        font-size: 2rem;
+        position: relative;
+      }
+
+      .statistics > article span {
+        color: grey;
+      }
+
+      .statistics > article:nth-of-type(1) {
+        background: rgba(255, 0, 0, 0.1);
+        border-color: rgb(255, 0, 0);
+      }
+      .statistics > article:nth-of-type(2) {
+        background: rgba(0, 0, 255, 0.1);
+        border-color: rgb(0, 0, 255);
+      }
+      .statistics > article:nth-of-type(3) {
+        background: rgba(255, 166, 0, 0.1);
+        border-color: rgb(255, 166, 0);
       }
     </style>
   </head>
@@ -177,15 +218,15 @@
       <section class="statistics">
         <article>
           <h2>12</h2>
-          <span>dada</span>
+          <span>Total facturado</span>
         </article>
         <article>
           <h2>12</h2>
-          <span>asda</span>
+          <span>Promedio facturado</span>
         </article>
         <article>
           <h2>12</h2>
-          <span>asdad</span>
+          <span>facturacion > 1000</span>
         </article>
       </section>
     </main>
