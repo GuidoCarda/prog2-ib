@@ -2,6 +2,7 @@
 
 const form = document.querySelector("form");
 const tableBodyElem = document.querySelector("tbody");
+const statisticsCardsElems = document.querySelectorAll(".statistics-card");
 
 const bills = [
   {
@@ -48,7 +49,11 @@ function handleSubmit(e) {
     return alert("campos vacios");
   }
 
-  if (formEntries.clientNumber < 0 || formEntries.clientNumber > 1278) {
+  if (
+    isNaN(formEntries.clientNumber) ||
+    formEntries.clientNumber < 0 ||
+    formEntries.clientNumber > 1278
+  ) {
     return alert("valor invalido");
   }
 
@@ -72,8 +77,14 @@ function handleSubmit(e) {
     }
   }
 
+  console.log(statisticsCardsElems);
   bills.push(formEntries);
   renderRows();
+  const statistics = getStatistics();
+
+  statistics.forEach((statistic, idx) => {
+    statisticsCardsElems[idx].firstElementChild.textContent = statistic;
+  });
 }
 
 function renderRows() {
@@ -93,4 +104,22 @@ function renderRows() {
   });
 }
 
+function getStatistics() {
+  let totalBilled = 0;
+  let averageBilled = 0;
+  let clientsOverThousand = 0;
+
+  bills.forEach((bill) => {
+    totalBilled += Number(bill.amount);
+    if (bill.amount > 1000) {
+      clientsOverThousand++;
+    }
+  });
+
+  if (bills.length) {
+    averageBilled = totalBilled / bills.length;
+  }
+
+  return [totalBilled, averageBilled.toFixed(2), clientsOverThousand];
+}
 renderRows();
