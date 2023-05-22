@@ -9,6 +9,7 @@ function handleSubmit(e) {
   clearResult(resultSection);
 
   const value = inputField.value.trim();
+
   const isValid = validateInput(value);
 
   if (!isValid) {
@@ -31,6 +32,23 @@ function printResult(node, content) {
 function validateInput(value) {
   if (!value.length) {
     alert("campo vacio");
+    return false;
+  }
+  if (isNaN(value)) {
+    alert("el valor ingresado no es un numero");
+    return false;
+  }
+  if (!Number.isInteger(Number(value))) {
+    alert("el valor ingresado no es entero");
+    return false;
+  }
+  return true;
+}
+
+function validateInput(newFactura) {
+  if (newFactura.cliente < 0 || newFactura.cliente < 1278) {
+    alert("campo vacio");
+
     return false;
   }
   if (isNaN(value)) {
