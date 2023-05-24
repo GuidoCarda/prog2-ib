@@ -5,36 +5,36 @@ const tableBodyElem = document.querySelector("tbody");
 const statisticsCardsElems = document.querySelectorAll(".statistics-card");
 
 const bills = [
-  {
-    date: "2023-05-10",
-    clientNumber: "1",
-    amount: "2",
-    concept: "servicio",
-  },
-  {
-    date: "2023-05-10",
-    clientNumber: "2",
-    amount: "2",
-    concept: "servicio",
-  },
-  {
-    date: "2023-05-10",
-    clientNumber: "3",
-    amount: "2",
-    concept: "servicio",
-  },
-  {
-    date: "2023-05-10",
-    clientNumber: "4",
-    amount: "2",
-    concept: "servicio",
-  },
-  {
-    date: "2023-05-10",
-    clientNumber: "5",
-    amount: "2123",
-    concept: "servicio",
-  },
+  // {
+  //   date: "2023-05-10",
+  //   clientNumber: "1",
+  //   amount: "2",
+  //   concept: "servicio",
+  // },
+  // {
+  //   date: "2023-05-10",
+  //   clientNumber: "2",
+  //   amount: "2",
+  //   concept: "servicio",
+  // },
+  // {
+  //   date: "2023-05-10",
+  //   clientNumber: "3",
+  //   amount: "2",
+  //   concept: "servicio",
+  // },
+  // {
+  //   date: "2023-05-10",
+  //   clientNumber: "4",
+  //   amount: "2",
+  //   concept: "servicio",
+  // },
+  // {
+  //   date: "2023-05-10",
+  //   clientNumber: "5",
+  //   amount: "2123",
+  //   concept: "servicio",
+  // },
 ];
 
 form.addEventListener("submit", handleSubmit);
@@ -62,45 +62,64 @@ function handleSubmit(e) {
   );
 
   if (client && client.clientNumber) {
-    const alreadyBilled = bills.findIndex(
-      (bill) =>
-        bill.clientNumber === client.clientNumber &&
-        new Date(bill.date).getFullYear() ===
-          new Date(formEntries.date).getFullYear() &&
-        new Date(bill.date).getMonth() === new Date(formEntries.date).getMonth()
-    );
-
-    console.log(alreadyBilled);
-
-    if (alreadyBilled >= 0) {
+    if (isAlreadyBilled(formEntries.clientNumber, formEntries.date)) {
       return alert("ya se facturo a este cliente el mes ingresado");
     }
   }
-
-  console.log(statisticsCardsElems);
   bills.push(formEntries);
   renderRows();
-  const statistics = getStatistics();
+  renderStatistics();
+}
 
-  statistics.forEach((statistic, idx) => {
-    statisticsCardsElems[idx].firstElementChild.textContent = statistic;
+function isAlreadyBilled(clientNumber, billingDate) {
+  const newBillingDate = new Date(billingDate);
+  return bills.some((bill) => {
+    const existingBillingDate = new Date(bill.date);
+
+    return (
+      bill.clientNumber === clientNumber &&
+      existingBillingDate.getFullYear() === newBillingDate.getFullYear() &&
+      existingBillingDate.getMonth() === newBillingDate.getMonth()
+    );
   });
 }
 
+function validateEntries() {}
+
 function renderRows() {
+  //Limpiamos contenido existente para evitar duplicacion
   tableBodyElem.innerHTML = "";
 
-  bills.forEach((factura) => {
+  //Si no hay facturas registradas
+  if (!bills.length) {
+    return (tableBodyElem.innerHTML = `
+      <tr>
+        <td class='empty-state' colspan="4">
+          No hay facturas cargadas
+        </td>
+      </tr>
+    `);
+  }
+
+  bills.forEach((bill) => {
+    const { clientNumber, date, amount, concept } = bill;
     const tableRow = document.createElement("tr");
 
     tableRow.innerHTML = `
-    <td>${factura.clientNumber}</td>
-    <td>${factura.date}</td>
-    <td>${factura.amount}</td>
-    <td>${factura.concept}</td>
-  `;
+    <td>${clientNumber}</td>
+    <td>${date}</td>
+    <td>${amount}</td>
+    <td>${concept || "-"}</td>
+    `;
 
     tableBodyElem.appendChild(tableRow);
+  });
+}
+
+function renderStatistics() {
+  const statistics = getStatistics();
+  statistics.forEach((statistic, idx) => {
+    statisticsCardsElems[idx].firstElementChild.textContent = statistic;
   });
 }
 
@@ -122,4 +141,7 @@ function getStatistics() {
 
   return [totalBilled, averageBilled.toFixed(2), clientsOverThousand];
 }
+
+//Renderizo las facturas existentes
 renderRows();
+renderStatistics();
