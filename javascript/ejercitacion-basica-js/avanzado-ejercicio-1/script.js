@@ -3,6 +3,7 @@
 const form = document.querySelector("form");
 const tableBodyElem = document.querySelector("tbody");
 const statisticsCardsElems = document.querySelectorAll(".statistics-card");
+const notificationElem = document.querySelector(".notification");
 
 const bills = [
   // {
@@ -45,17 +46,7 @@ function handleSubmit(e) {
   const formData = new FormData(e.target);
   const formEntries = Object.fromEntries(formData);
 
-  if (!formEntries.clientNumber || !formEntries.date || !formEntries.amount) {
-    return alert("campos vacios");
-  }
-
-  if (
-    isNaN(formEntries.clientNumber) ||
-    formEntries.clientNumber < 0 ||
-    formEntries.clientNumber > 1278
-  ) {
-    return alert("valor invalido");
-  }
+  if (!validateEntries(formEntries)) return;
 
   const client = bills.find(
     (bill) => bill.clientNumber === formEntries.clientNumber
@@ -63,10 +54,18 @@ function handleSubmit(e) {
 
   if (client && client.clientNumber) {
     if (isAlreadyBilled(formEntries.clientNumber, formEntries.date)) {
-      return alert("ya se facturo a este cliente el mes ingresado");
+      return renderNotification({
+        message: "Ya se facturo a este cliente el mes ingresado",
+        type: "error",
+      });
     }
   }
+
   bills.push(formEntries);
+  renderNotification({
+    message: "Cliente facturado satisfactoriamente",
+    type: "success",
+  });
   renderRows();
   renderStatistics();
 }
@@ -84,7 +83,31 @@ function isAlreadyBilled(clientNumber, billingDate) {
   });
 }
 
-function validateEntries() {}
+function validateEntries(formEntries) {
+  if (!formEntries.clientNumber || !formEntries.date || !formEntries.amount) {
+    renderNotification({ message: "campos vacios", type: "error" });
+    return false;
+  }
+
+  if (!isCurrentMonth(formEntries.date)) {
+    renderNotification({
+      message: "El mes de facturacion ingresado no es el actual",
+      type: "error",
+    });
+    return false;
+  }
+
+  if (
+    isNaN(formEntries.clientNumber) ||
+    formEntries.clientNumber < 0 ||
+    formEntries.clientNumber > 1278
+  ) {
+    renderNotification({ message: "Nro de cliente invalido", type: "error" });
+    return false;
+  }
+
+  return true;
+}
 
 function renderRows() {
   //Limpiamos contenido existente para evitar duplicacion
@@ -116,6 +139,17 @@ function renderRows() {
   });
 }
 
+function isCurrentMonth(date) {
+  //Asegurar que las fechas a comparar son un objeto date
+  const dateToCompare = new Date(date);
+  const today = new Date();
+
+  return (
+    today.getFullYear() === dateToCompare.getFullYear() &&
+    today.getMonth() === dateToCompare.getMonth()
+  );
+}
+
 function renderStatistics() {
   const statistics = getStatistics();
   statistics.forEach((statistic, idx) => {
@@ -124,8 +158,11 @@ function renderStatistics() {
 }
 
 function getStatistics() {
+  //Total facturado
   let totalBilled = 0;
+  //Promedio facturado por cliente
   let averageBilled = 0;
+  //Nro de clientes cuya facturacion > 1000
   let clientsOverThousand = 0;
 
   bills.forEach((bill) => {
@@ -136,10 +173,31 @@ function getStatistics() {
   });
 
   if (bills.length) {
-    averageBilled = totalBilled / bills.length;
+    averageBilled = totalBilled / 1278;
   }
 
   return [totalBilled, averageBilled.toFixed(2), clientsOverThousand];
+}
+
+function renderNotification(content, delay = 2000) {
+  //Si ya hay una notificacion en pantalla retorno
+  if (notificationElem.classList.contains("visible")) {
+    return;
+  }
+
+  //Extraigo el contenido de la notificacion
+  const { message, type } = content;
+
+  //Populo la notificacion con los datos recibidos
+  notificationElem.textContent = message;
+  notificationElem.classList.add(`${type}`, "visible");
+
+  //Limpio la notificacion luego de un delay en milisegundos
+  //(2000ms por defecto)
+  setTimeout(
+    () => notificationElem.classList.remove(`${type}`, "visible"),
+    delay
+  );
 }
 
 //Renderizo las facturas existentes

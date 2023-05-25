@@ -183,3 +183,43 @@ tbody td.empty-state {
   background: rgba(140, 214, 157, 0.1);
   border-color: rgb(140, 214, 157);
 }
+
+/* Notifications */
+
+.notification {
+  position: absolute;
+  inset: auto 0;
+  margin-inline: auto;
+
+  display: grid;
+  place-content: center;
+
+  width: max-content;
+  padding: 1rem;
+  color: hsl(0, 0%, 69%);
+  background: hsla(0, 0%, 69%, 0.102);
+  border-radius: 0.5rem;
+  font-weight: 700;
+  border: 1px solid hsl(0, 0%, 69%);
+
+  translate: 0 1rem;
+  opacity: 0;
+  transition: 1s all;
+}
+
+.notification.visible {
+  opacity: 1;
+  translate: 0;
+}
+
+.notification.success {
+  color: hsl(130, 47%, 60%);
+  background: hsla(130, 47%, 69%, 0.1);
+  border-color: hsl(130, 47%, 60%);
+}
+
+.notification.error {
+  color: hsl(0, 60%, 69%);
+  background: rgba(214, 140, 140, 0.1);
+  border-color: rgb(214, 140, 140);
+}
