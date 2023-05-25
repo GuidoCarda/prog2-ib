@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      html {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        font: inherit;
+      }
+
+      main {
+        height: 100%;
+        background: #ba494a;
+      }
+
+      main > section {
+        width: min(664px, 90%);
+        margin-inline: auto;
+        padding-inline: 1rem;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding-block: 1rem;
+        color: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.146);
+      }
+
+      nav span {
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+
+      nav > div button + button {
+        margin-left: 0.5rem;
+      }
+
+      nav > div button {
+        display: inline-flex;
+        align-items: center;
+        height: 2rem;
+
+        background-color: rgba(255, 255, 255, 0.192);
+        color: white;
+
+        line-height: 1rem;
+        font-size: 0.875rem;
+        text-transform: capitalize;
+
+        padding-inline: 0.875rem;
+        border-radius: 0.2rem;
+      }
+
+      .timer-container,
+      .tasks-container {
+        width: min(480px, 100%);
+        margin-inline: auto;
+      }
+
+      .timer-container {
+        background-color: rgba(255, 255, 255, 0.129);
+        border-radius: 0.5rem;
+        padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+        margin-block-start: 2.5rem;
+        color: white;
+      }
+
+      .timer {
+        font-size: 7rem;
+        text-align: center;
+      }
+
+      .timer-modes {
+        width: max-content;
+        margin-inline: auto;
+      }
+
+      .timer-modes > button {
+        background: none;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.2rem;
+        color: white;
+      }
+
+      .timer-modes > button.active {
+        background-color: rgba(0, 0, 0, 0.192);
+        font-weight: bold;
+      }
+
+      .timer-container > button:last-of-type {
+        display: block;
+        height: 3.5rem;
+        padding-inline: 3rem;
+        color: #ba494a;
+        background: white;
+        font-weight: bold;
+        margin-top: 2rem;
+        margin-inline: auto;
+        border-radius: 0.3rem;
+        font-size: 1.25rem;
+        box-shadow: 0px 6px 0px 0px rgb(223, 223, 223);
+      }
+
+      .timer-container > button:last-of-type:active {
+        translate: 0 6px;
+        box-shadow: 0px 0px 0px 0px rgb(223, 223, 223);
+      }
+
+      .pomodoro-counter {
+        text-align: center;
+        margin-block: 1rem;
+        color: white;
+      }
+
+      .pomodoro-counter .count {
+        color: rgb(216, 216, 216);
+      }
+
+      .pomodoro-counter p {
+        font-size: 1.125rem;
+      }
+
+      .tasks-container {
+        color: white;
+      }
+
+      .tasks-container header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid white;
+        padding-bottom: 1.125rem;
+      }
+
+      .tasks-container header button {
+        display: grid;
+        place-items: center;
+        height: 2rem;
+        width: 2rem;
+        border-radius: 0.2rem;
+        background-color: rgba(255, 255, 255, 0.192);
+      }
+
+      .tasks-container header button span {
+        display: block;
+        background: white;
+        height: 0.3rem;
+        width: 0.3rem;
+        border-radius: 100%;
+      }
+      .tasks-container header button span::before,
+      .tasks-container header button span::after {
+        content: "";
+        display: block;
+        border-radius: 100%;
+        height: 0.3rem;
+        width: 0.3rem;
+        background: white;
+        position: relative;
+      }
+
+      .tasks-container header button span::before {
+        top: -7px;
+      }
+
+      .tasks-container header button span::after {
+        bottom: -2px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <nav class="">
+          <span>pomofocus</span>
+          <div>
+            <button>report</button>
+            <button>settings</button>
+            <button>login</button>
+          </div>
+        </nav>
+        <div class="timer-container">
+          <header class="timer-modes">
+            <button class="active">Pomodoro</button>
+            <button>Short Break</button>
+            <button>Long Break</button>
+          </header>
+          <h2 class="timer">25:00</h2>
+          <button>START</button>
+        </div>
+
+        <div class="pomodoro-counter">
+          <span class="count">#1</span>
+          <p>Time to focus!</p>
+        </div>
+
+        <div class="tasks-container">
+          <header>
+            <h3>Tasks</h3>
+            <button>
+              <span></span>
+            </button>
+          </header>
+          <button></button>
+        </div>
+      </section>
+    </main>
+    <section>
+      <h1>eqeqw</h1>
+      <h1>eqeqw</h1>
+      <h1>eqeqw</h1>
+      <h1>eqeqw</h1>
+      <h1>eqeqw</h1>
+      <h1>eqeqw</h1>
+      <h1>eqeqw</h1>
+      <h1>eqeqw</h1>
+    </section>
+  </body>
+</html>
