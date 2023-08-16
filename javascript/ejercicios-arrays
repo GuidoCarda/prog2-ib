@@ -1,0 +1,137 @@
+//"Ejercicio 1",
+//"Deberá cargar un vector de 100 elementos por medio de un programa en Javascript, con números aleatorios entre -100 y 100. Realizar una función para mostrar los máximos relativos. Un máximo relativo es aquel término que es mayor que sus dos adyacentes.",
+
+const randomNumber = (min, max) => Math.random() * (max - min) + min
+const array = Array(100).fill('').map(e => randomNumber(-100,100))
+
+
+//Solucion 1
+function obtenerMaximosRelativos(numeros){
+  const maximosRelativos = []
+  
+  numeros.forEach((numero, indice)=>{
+    if(indice === 0){
+      numero > numeros[indice + 1] && maximosRelativos.push(numero)  
+    }
+    
+    if(indice === numeros.length){
+      numero > numeros[indice - 1] && maximosRelativos.push(numero)  
+    }
+    
+    if(numero > numeros[indice + 1] && numero > numeros[indice - 1]){
+      maximosRelativos.push(numero)
+    }
+  })
+  
+  return maximosRelativos
+}
+
+//Solucion 2
+function obtenerMaximosRelativos2(numeros){
+  return numeros.filter((numero, indice)=>{
+    return (indice === 0 && numero > numeros[indice + 1]) ||
+    (indice === numeros.length && numero > numeros[indice - 1]) ||
+    (numero > numeros[indice - 1] && numero > numeros[indice + 1])
+  })
+}
+
+//Solucion 3
+function obtenerMaximosRelativos3(numeros){
+  const maximosRelativos = []
+  
+  for(let i = 1; i < numeros.length - 1; i++){
+    if(numeros[i] > numeros[i - 1] && numeros[i] > numeros[i + 1]){
+      maximosRelativos.push(numeros[i])
+    }
+  }
+  
+  return maximosRelativos
+}
+
+
+//obtenerMaximosRelativos(array)
+//obtenerMaximosRelativos2(array)
+//obtenerMaximosRelativos3(array)
+
+
+// "Ejercicio 2",
+// "Escribir un programa en Javascript que cargue en un array las notas de 30 alumnos de un curso (hacerlo con números al azar entre 0 y 10). Luego deberá armar una función llamada Abanderado que devolverá la nota de los 3 mejores alumnos. Fuera de la función, deberá imprimir las 3 notas y la ubicación de cada una dentro del array.",
+
+
+//Solucion 1:
+
+function ejercicio2(){
+const numeroAleatorio = (min,max) => Math.round(Math.random() * (max-min) + min)
+
+const alumnos = Array(30)
+                  .fill(0)
+                  .map( (_,index) => [index, numeroAleatorio(0,10)])
+
+function abanderado(alumnos){
+  return alumnos
+          .sort((a,b)=> b[1] - a[1]) // odrdeno por notas
+          .slice(0, 3) // extaigo los 3 primeros
+}
+
+  abanderado(alumnos).forEach((abanderado)=>{
+    const [posicion, nota] = abanderado 
+    console.log(`Nota: ${nota}, ubicado en posicion ${posicion}`)
+  })
+}
+
+// "Ejercicio 3",
+// "Escribir un programa en Javascript que cargue un array de 50 elementos con números al azar entre -500 y 500, y que no se repitan. Luego deberá armar una función llamada Calculos que devolverá la suma de todos los elementos del array, la cantidad de números positivos y la cantidad de números negativos que se encuentren en el array. Fuera de la función, deberá imprimir esos tres valores. Por último, deberá armar un nuevo array sólo con los números negativos encontrados en el anterior. Deberá imprimirlo por pantalla, y en caso de que no se haya encontrado ningún número negativo, informar por pantalla de esta situación.",
+
+const getRandomNumber = (min,max) => Math.round(Math.random() * (max - min) + min )
+
+function getRandomUniqueNumbers(quantity,min,max){
+  const numbers = new Set()
+  
+  while(numbers.size < quantity){
+    numbers.add(getRandomNumber(min,max))
+  }
+  
+  return Array.from(numbers)
+}
+
+
+const uniqueNumbers = getRandomUniqueNumbers(50 ,-100,100)
+
+function calculations(values){
+  let sum = 0 ;
+  let positives = 0;
+  let negatives = 0
+  
+  for(value of values){
+    if(value >= 0){
+      positives = positives + 1;
+    }
+    if(value < 0){
+      negatives = negatives + 1;
+    }
+    
+    sum = sum + value;
+  }
+  
+  return [sum,positives, negatives]
+}
+
+const [sum, positives, negatives] = calculations(uniqueNumbers)
+
+console.log(`La suma de todos los numeros es de: ${sum}, en el array hay un total de ${positives} nros positivos y ${negatives} nros negativos`)
+
+const negativeUniqueNumbers = uniqueNumbers.filter(n => n < 0)
+
+
+if(negatives){
+  console.log('Numeros negativos encontrados:')
+  negativeUniqueNumbers.forEach(number=>{
+    console.log(number)
+  })
+}else{
+  console.log('no se encontraron numeros negativos')
+}
+
+
+
+
