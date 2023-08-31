@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Facturacion</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <a class="nav-logo" href="analisis.php">Químicamente</a>
+        <label for="check" class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <input type="checkbox" id="check" />
+        <ul>
+          <li><a href="analisis.php">analisis</a></li>
+          <li><a href="ventas.html">ventas</a></li>
+          <li><a href="compras.html">compras</a></li>
+          <li><a href="stock.html">stock</a></li>
+          <li><a href="facturacion.html">facturación</a></li>
+          <li><a href="configuracion.html">configuración</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main id="stock">
+      <div class="container">
+        <a class="return-link" href="analisis.php">Inicio</a>
+        <h1 class="page-title">facturación</h1>
+        <ul class="sub-menu">
+          <li><a href="#notas-credito">notas de crédito</a></li>
+          <li><a href="#notas-debito">notas de débito</a></li>
+          <li><a href="#emision-facturas">registro emision facturas</a></li>
+          <li><a href="#recepcion-facturas">registro recepción facturas</a></li>
+        </ul>
+
+        <section>
+          <h2 id="notas-credito">Generación de notas de crédito</h2>
+          <p>
+            En esta sección se pueden generar notas de crédito para corregir
+            errores en las facturas emitidas previamente. Las notas de crédito
+            pueden ser utilizadas para reducir el monto de una factura
+            existente, o para compensar una factura vencida. Para generar una
+            nota de crédito, se debe seleccionar la factura correspondiente y
+            especificar el motivo de la corrección, así como la cantidad a ser
+            acreditada.
+          </p>
+        </section>
+
+        <section>
+          <h2 id="notas-debito">Generación de notas de débito:</h2>
+          <p>
+            Aquí se pueden generar notas de débito para facturar a los clientes
+            cualquier cargo adicional que no se incluyó en la factura original.
+            Por ejemplo, una nota de débito podría ser utilizada para cobrar
+            cargos por intereses o por costos de envío adicionales. Para generar
+            una nota de débito, se debe seleccionar la factura correspondiente y
+            especificar el motivo del cargo adicional, así como la cantidad a
+            ser facturada.
+          </p>
+        </section>
+        <section>
+          <h2 id="emision-facturas">Registro de facturas emitidas</h2>
+          <p>
+            En esta sección se registra cada factura que la empresa emite a sus
+            clientes. Este registro incluye información detallada sobre la
+            factura, como el número, la fecha de emisión, los productos
+            vendidos, el monto total, entre otros datos.
+          </p>
+        </section>
+        <section>
+          <h2 id="recepcion-facturas">Registro de facturas recibidas</h2>
+          <p>
+            Aquí se registra cada factura que la empresa recibe de sus
+            proveedores. Este registro incluye información detallada sobre la
+            factura, como el número, la fecha de recepción, los productos
+            adquiridos, el monto total, entre otros datos.
+          </p>
+        </section>
+      </div>
+    </main>
+    <footer>Quimicamente 2023 Derechos reservados</footer>
+  </body>
+</html>

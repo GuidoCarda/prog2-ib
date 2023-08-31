@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Actividad 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <!-- <script>
+
+      -v2 
+      window.onload = function () {
+        document.getElementById("user-input").focus();
+      };
+    </script> -->
+    <nav>
+      <div class="container">
+        <a class="nav-logo" href="index.php">Químicamente</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container login">
+        <form action="login.php" method="post" class="login-form">
+          <h2>Bienvenido!</h2>
+          <div>
+            <label for="user">usuario</label>
+            <input autofocus id="user-input" type="text" name="user" required />
+          </div>
+          <div>
+            <label for="password">contraseña</label>
+            <input type="password" required name="password" />
+          </div>
+          <button>Iniciar sesion</button>
+        </form>
+      </div>
+    </main>
+    <footer>Quimicamente 2023 Derechos reservados</footer>
+    <!-- <script>
+      V2
+      const userInput = document.getElementById("user-input");
+      userInput.focus();
+    </script> -->
+  </body>
+</html>
